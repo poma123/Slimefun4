@@ -1,5 +1,7 @@
 package io.github.thebusybiscuit.slimefun4.implementation.listeners;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Tag;
@@ -30,11 +32,12 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
  * @author VoidAngel
  * @author Poslovitch
  * @author TheBusyBiscuit
+ * @author AccelShark
  *
  */
 public class BlockPhysicsListener implements Listener {
 
-    public BlockPhysicsListener(SlimefunPlugin plugin) {
+    public BlockPhysicsListener(@Nonnull SlimefunPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
@@ -52,21 +55,27 @@ public class BlockPhysicsListener implements Listener {
 
     @EventHandler
     public void onPistonExtend(BlockPistonExtendEvent e) {
-        for (Block b : e.getBlocks()) {
-            if (BlockStorage.hasBlockInfo(b) || (b.getRelative(e.getDirection()).getType() == Material.AIR && BlockStorage.hasBlockInfo(b.getRelative(e.getDirection())))) {
-                e.setCancelled(true);
-                return;
+        if (BlockStorage.hasBlockInfo(e.getBlock())) {
+            e.setCancelled(true);
+        } else {
+            for (Block b : e.getBlocks()) {
+                if (BlockStorage.hasBlockInfo(b) || (b.getRelative(e.getDirection()).getType() == Material.AIR && BlockStorage.hasBlockInfo(b.getRelative(e.getDirection())))) {
+                    e.setCancelled(true);
+                    break;
+                }
             }
         }
     }
 
     @EventHandler
     public void onPistonRetract(BlockPistonRetractEvent e) {
-        if (e.isSticky()) {
+        if (BlockStorage.hasBlockInfo(e.getBlock())) {
+            e.setCancelled(true);
+        } else if (e.isSticky()) {
             for (Block b : e.getBlocks()) {
                 if (BlockStorage.hasBlockInfo(b) || (b.getRelative(e.getDirection()).getType() == Material.AIR && BlockStorage.hasBlockInfo(b.getRelative(e.getDirection())))) {
                     e.setCancelled(true);
-                    return;
+                    break;
                 }
             }
         }

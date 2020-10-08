@@ -1,11 +1,15 @@
 package io.github.thebusybiscuit.slimefun4.implementation.listeners;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.bukkit.block.BrewingStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
@@ -30,15 +34,14 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
  */
 public class VanillaMachinesListener implements Listener {
 
-    public VanillaMachinesListener(SlimefunPlugin plugin) {
+    public VanillaMachinesListener(@Nonnull SlimefunPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler(ignoreCancelled = true)
     public void onGrindstone(InventoryClickEvent e) {
         // The Grindstone was only ever added in MC 1.14
-        MinecraftVersion minecraftVersion = SlimefunPlugin.getMinecraftVersion();
-        if (!minecraftVersion.isAtLeast(MinecraftVersion.MINECRAFT_1_14)) {
+        if (!SlimefunPlugin.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_14)) {
             return;
         }
 
@@ -94,19 +97,50 @@ public class VanillaMachinesListener implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true)
-    public void onPreBrew(InventoryClickEvent e) {
-        Inventory inventory = e.getInventory();
+    public void onCartographyTable(InventoryClickEvent e) {
+        // The Cartography Table was only ever added in MC 1.14
+        if (!SlimefunPlugin.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_14)) {
+            return;
+        }
 
-        if (inventory.getType() == InventoryType.BREWING && e.getRawSlot() < inventory.getSize() && inventory.getHolder() instanceof BrewingStand) {
-            e.setCancelled(isUnallowed(SlimefunItem.getByItem(e.getCursor())));
+        if (e.getRawSlot() == 2 && e.getInventory().getType() == InventoryType.CARTOGRAPHY && e.getWhoClicked() instanceof Player) {
+            ItemStack item1 = e.getInventory().getContents()[0];
+            ItemStack item2 = e.getInventory().getContents()[1];
+
+            if (checkForUnallowedItems(item1, item2)) {
+                e.setResult(Result.DENY);
+                SlimefunPlugin.getLocalization().sendMessage((Player) e.getWhoClicked(), "cartography_table.not-working", true);
+            }
         }
     }
 
-    private boolean checkForUnallowedItems(ItemStack item1, ItemStack item2) {
+    @EventHandler(ignoreCancelled = true)
+    public void onPreBrew(InventoryClickEvent e) {
+        Inventory clickedInventory = e.getClickedInventory();
+        Inventory topInventory = e.getView().getTopInventory();
+
+        if (clickedInventory != null && topInventory.getType() == InventoryType.BREWING && topInventory.getHolder() instanceof BrewingStand) {
+            if (e.getAction() == InventoryAction.HOTBAR_SWAP) {
+                e.setCancelled(true);
+                return;
+            }
+
+            if (clickedInventory.getType() == InventoryType.BREWING) {
+                e.setCancelled(isUnallowed(SlimefunItem.getByItem(e.getCursor())));
+            } else {
+                e.setCancelled(isUnallowed(SlimefunItem.getByItem(e.getCurrentItem())));
+            }
+
+            if (e.getResult() == Result.DENY) {
+                SlimefunPlugin.getLocalization().sendMessage((Player) e.getWhoClicked(), "brewing_stand.not-working", true);
+            }
+        }
+    }
+
+    private boolean checkForUnallowedItems(@Nullable ItemStack item1, @Nullable ItemStack item2) {
         if (SlimefunGuide.isGuideItem(item1) || SlimefunGuide.isGuideItem(item2)) {
             return true;
-        }
-        else {
+        } else {
             SlimefunItem sfItem1 = SlimefunItem.getByItem(item1);
             SlimefunItem sfItem2 = SlimefunItem.getByItem(item2);
 
@@ -118,7 +152,7 @@ public class VanillaMachinesListener implements Listener {
         return false;
     }
 
-    private boolean isUnallowed(SlimefunItem item) {
+    private boolean isUnallowed(@Nullable SlimefunItem item) {
         return item != null && !(item instanceof VanillaItem) && !item.isDisabled();
     }
 }

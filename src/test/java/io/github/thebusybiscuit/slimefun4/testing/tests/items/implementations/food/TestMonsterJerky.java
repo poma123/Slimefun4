@@ -6,7 +6,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
@@ -19,7 +19,7 @@ import io.github.thebusybiscuit.slimefun4.testing.interfaces.SlimefunItemTest;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
-public class TestMonsterJerky implements SlimefunItemTest<MonsterJerky> {
+class TestMonsterJerky implements SlimefunItemTest<MonsterJerky> {
 
     private static ServerMock server;
     private static SlimefunPlugin plugin;
@@ -44,8 +44,8 @@ public class TestMonsterJerky implements SlimefunItemTest<MonsterJerky> {
     }
 
     @Test
-    @Disabled("Potion Effects are currently not fully implemented in MockBukkit")
-    public void testConsumptionBehaviour() {
+    @DisplayName("Test Monster Jerky giving Saturation and removing Hunger")
+    void testConsumptionBehaviour() {
         PlayerMock player = server.addPlayer();
         player.addPotionEffect(PotionEffectType.HUNGER.createEffect(20, 2));
         MonsterJerky jerky = registerSlimefunItem(plugin, "TEST_MONSTER_JERKY");

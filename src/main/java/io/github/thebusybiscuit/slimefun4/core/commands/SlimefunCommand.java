@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,7 +39,7 @@ public class SlimefunCommand implements CommandExecutor, Listener {
      * @param plugin
      *            The instance of our {@link SlimefunPlugin}
      */
-    public SlimefunCommand(SlimefunPlugin plugin) {
+    public SlimefunCommand(@Nonnull SlimefunPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -52,6 +54,7 @@ public class SlimefunCommand implements CommandExecutor, Listener {
         commands.addAll(SlimefunSubCommands.getAllCommands(this));
     }
 
+    @Nonnull
     public SlimefunPlugin getPlugin() {
         return plugin;
     }
@@ -61,6 +64,7 @@ public class SlimefunCommand implements CommandExecutor, Listener {
      * 
      * @return A {@link Map} holding the amount of times each command was run
      */
+    @Nonnull
     public Map<SubCommand, Integer> getCommandUsage() {
         return commandUsage;
     }
@@ -79,10 +83,13 @@ public class SlimefunCommand implements CommandExecutor, Listener {
 
         sendHelp(sender);
 
-        return true;
+        // We could just return true here, but if there's no subcommands, then
+        // something went horribly wrong anyway. This will also stop sonarcloud
+        // from nagging about this always returning true...
+        return !commands.isEmpty();
     }
 
-    public void sendHelp(CommandSender sender) {
+    public void sendHelp(@Nonnull CommandSender sender) {
         sender.sendMessage("");
         sender.sendMessage(ChatColors.color("&aSlimefun &2v" + SlimefunPlugin.getVersion()));
         sender.sendMessage("");
@@ -107,6 +114,7 @@ public class SlimefunCommand implements CommandExecutor, Listener {
      * 
      * @return A {@link List} containing every {@link SubCommand}
      */
+    @Nonnull
     public List<String> getSubCommandNames() {
         return commands.stream().map(SubCommand::getName).collect(Collectors.toList());
     }

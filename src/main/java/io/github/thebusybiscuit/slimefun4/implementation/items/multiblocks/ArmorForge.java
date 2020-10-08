@@ -26,7 +26,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 public class ArmorForge extends MultiBlockMachine {
 
     public ArmorForge(Category category, SlimefunItemStack item) {
-        super(category, item, new ItemStack[] { null, null, null, null, new ItemStack(Material.ANVIL), null, null, new CustomItem(Material.DISPENSER, "Dispenser (Facing up)"), null }, new ItemStack[0], BlockFace.SELF);
+        super(category, item, new ItemStack[] { null, null, null, null, new ItemStack(Material.ANVIL), null, null, new CustomItem(Material.DISPENSER, "Dispenser (Facing up)"), null }, BlockFace.SELF);
     }
 
     @Override
@@ -48,8 +48,7 @@ public class ArmorForge extends MultiBlockMachine {
 
                         if (outputInv != null) {
                             craft(p, output, inv, outputInv);
-                        }
-                        else {
+                        } else {
                             SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);
                         }
                     }
@@ -84,11 +83,10 @@ public class ArmorForge extends MultiBlockMachine {
         for (int j = 0; j < 4; j++) {
             int current = j;
 
-            Slimefun.runSync(() -> {
+            SlimefunPlugin.runSync(() -> {
                 if (current < 3) {
                     p.getWorld().playSound(p.getLocation(), Sound.BLOCK_ANVIL_USE, 1F, 2F);
-                }
-                else {
+                } else {
                     p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1F, 1F);
                     outputInv.addItem(output);
                 }

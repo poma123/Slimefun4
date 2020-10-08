@@ -62,8 +62,7 @@ public class ReactorAccessPort extends SlimefunItem {
 
                         return false;
                     });
-                }
-                else {
+                } else {
                     menu.replaceExistingItem(INFO_SLOT, new CustomItem(Material.RED_WOOL, "&7Reactor", "", "&cNot detected", "", "&7Reactor must be", "&7placed 3 blocks below", "&7the access port!"));
                     menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                         newInstance(menu, b);
@@ -76,8 +75,7 @@ public class ReactorAccessPort extends SlimefunItem {
             public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
                 if (flow == ItemTransportFlow.INSERT) {
                     return getInputSlots();
-                }
-                else {
+                } else {
                     return getOutputSlots();
                 }
             }
@@ -87,12 +85,10 @@ public class ReactorAccessPort extends SlimefunItem {
                 if (flow == ItemTransportFlow.INSERT) {
                     if (SlimefunItem.getByItem(item) instanceof CoolantCell) {
                         return getCoolantSlots();
-                    }
-                    else {
+                    } else {
                         return getFuelSlots();
                     }
-                }
-                else {
+                } else {
                     return getOutputSlots();
                 }
             }
@@ -102,27 +98,11 @@ public class ReactorAccessPort extends SlimefunItem {
             BlockMenu inv = BlockStorage.getInventory(b);
 
             if (inv != null) {
-                for (int slot : getFuelSlots()) {
-                    if (inv.getItemInSlot(slot) != null) {
-                        b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
-                        inv.replaceExistingItem(slot, null);
-                    }
-                }
-
-                for (int slot : getCoolantSlots()) {
-                    if (inv.getItemInSlot(slot) != null) {
-                        b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
-                        inv.replaceExistingItem(slot, null);
-                    }
-                }
-
-                for (int slot : getOutputSlots()) {
-                    if (inv.getItemInSlot(slot) != null) {
-                        b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
-                        inv.replaceExistingItem(slot, null);
-                    }
-                }
+                inv.dropItems(b.getLocation(), getFuelSlots());
+                inv.dropItems(b.getLocation(), getCoolantSlots());
+                inv.dropItems(b.getLocation(), getOutputSlots());
             }
+
             return true;
         });
     }

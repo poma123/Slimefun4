@@ -21,13 +21,21 @@ import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.papermc.lib.PaperLib;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class Compressor extends MultiBlockMachine {
 
     public Compressor(Category category, SlimefunItemStack item) {
-        super(category, item, new ItemStack[] { null, null, null, null, new ItemStack(Material.NETHER_BRICK_FENCE), null, new ItemStack(Material.PISTON), new CustomItem(Material.DISPENSER, "Dispenser (Facing up)"), new ItemStack(Material.PISTON) }, new ItemStack[] { new CustomItem(SlimefunItems.STONE_CHUNK, 4), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FLINT, 8), new ItemStack(Material.COBBLESTONE) }, BlockFace.SELF);
+        super(category, item, new ItemStack[] { null, null, null, null, new ItemStack(Material.NETHER_BRICK_FENCE), null, new ItemStack(Material.PISTON), new CustomItem(Material.DISPENSER, "Dispenser (Facing up)"), new ItemStack(Material.PISTON) }, BlockFace.SELF);
+    }
+
+    @Override
+    protected void registerDefaultRecipes(List<ItemStack> recipes) {
+        recipes.add(new SlimefunItemStack(SlimefunItems.STONE_CHUNK, 4));
+        recipes.add(new ItemStack(Material.COBBLESTONE));
+
+        recipes.add(new ItemStack(Material.FLINT, 8));
+        recipes.add(new ItemStack(Material.COBBLESTONE));
     }
 
     @Override
@@ -56,8 +64,7 @@ public class Compressor extends MultiBlockMachine {
                             inv.removeItem(removing);
 
                             craft(p, output, outputInv);
-                        }
-                        else {
+                        } else {
                             SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);
                         }
 
@@ -74,11 +81,10 @@ public class Compressor extends MultiBlockMachine {
         for (int i = 0; i < 4; i++) {
             int j = i;
 
-            Slimefun.runSync(() -> {
+            SlimefunPlugin.runSync(() -> {
                 if (j < 3) {
                     p.getWorld().playSound(p.getLocation(), j == 1 ? Sound.BLOCK_PISTON_CONTRACT : Sound.BLOCK_PISTON_EXTEND, 1F, j == 0 ? 1F : 2F);
-                }
-                else {
+                } else {
                     p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1F, 1F);
                     outputInv.addItem(output);
                 }

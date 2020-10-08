@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -34,9 +36,15 @@ public class Smeltery extends AbstractSmeltery {
     private final ItemSetting<Integer> fireBreakingChance = new ItemSetting<>("fire-breaking-chance", 34);
 
     public Smeltery(Category category, SlimefunItemStack item) {
-        super(category, item, new ItemStack[] { null, new ItemStack(Material.NETHER_BRICK_FENCE), null, new ItemStack(Material.NETHER_BRICKS), new CustomItem(Material.DISPENSER, "Dispenser (Facing up)"), new ItemStack(Material.NETHER_BRICKS), null, new ItemStack(Material.FLINT_AND_STEEL), null }, new ItemStack[] { SlimefunItems.IRON_DUST, new ItemStack(Material.IRON_INGOT) }, BlockFace.DOWN);
+        super(category, item, new ItemStack[] { null, new ItemStack(Material.NETHER_BRICK_FENCE), null, new ItemStack(Material.NETHER_BRICKS), new CustomItem(Material.DISPENSER, "Dispenser (Facing up)"), new ItemStack(Material.NETHER_BRICKS), null, new ItemStack(Material.FLINT_AND_STEEL), null }, BlockFace.DOWN);
 
         addItemSetting(fireBreakingChance);
+    }
+
+    @Override
+    protected void registerDefaultRecipes(@Nonnull List<ItemStack> recipes) {
+        recipes.add(SlimefunItems.IRON_DUST);
+        recipes.add(new ItemStack(Material.IRON_INGOT));
     }
 
     @Override
@@ -44,7 +52,7 @@ public class Smeltery extends AbstractSmeltery {
         List<ItemStack> items = new ArrayList<>();
 
         for (int i = 0; i < recipes.size() - 1; i += 2) {
-            if (Arrays.stream(recipes.get(i)).skip(1).anyMatch(Objects::nonNull)) {
+            if (recipes.get(i) == null || Arrays.stream(recipes.get(i)).skip(1).anyMatch(Objects::nonNull)) {
                 continue;
             }
 
@@ -80,23 +88,21 @@ public class Smeltery extends AbstractSmeltery {
                 }
 
                 p.getWorld().playSound(p.getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1, 1);
-            }
-            else {
+            } else {
                 SlimefunPlugin.getLocalization().sendMessage(p, "machines.ignition-chamber-no-flint", true);
 
                 Block fire = b.getRelative(BlockFace.DOWN).getRelative(BlockFace.DOWN);
                 fire.getWorld().playEffect(fire.getLocation(), Effect.STEP_SOUND, fire.getType());
                 fire.setType(Material.AIR);
             }
-        }
-        else {
+        } else {
             Block fire = b.getRelative(BlockFace.DOWN).getRelative(BlockFace.DOWN);
             fire.getWorld().playEffect(fire.getLocation(), Effect.STEP_SOUND, fire.getType());
             fire.setType(Material.AIR);
         }
     }
 
-    private Inventory findIgnitionChamber(Block b) {
+    private Inventory findIgnitionChamber(@Nonnull Block b) {
         for (BlockFace face : faces) {
             if (b.getRelative(face).getType() == Material.DROPPER && BlockStorage.check(b.getRelative(face), "IGNITION_CHAMBER")) {
                 BlockState state = PaperLib.getBlockState(b.getRelative(face), false).getState();

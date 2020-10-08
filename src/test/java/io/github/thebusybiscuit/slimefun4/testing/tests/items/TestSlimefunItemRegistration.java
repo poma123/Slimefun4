@@ -78,7 +78,7 @@ public class TestSlimefunItemRegistration {
 
         Optional<String> wiki = item.getWikipage();
         Assertions.assertTrue(wiki.isPresent());
-        Assertions.assertEquals("https://github.com/TheBusyBiscuit/Slimefun4/wiki/Test", wiki.get());
+        Assertions.assertEquals("https://github.com/Slimefun/Slimefun4/wiki/Test", wiki.get());
     }
 
     @Test
@@ -171,8 +171,7 @@ public class TestSlimefunItemRegistration {
             Assertions.assertTrue(sfItem.isItem(new CustomItem(Material.BEACON, "&cItem Test")));
 
             SlimefunPlugin.getRegistry().setBackwardsCompatible(false);
-        }
-        else {
+        } else {
             Assertions.assertFalse(sfItem.isItem(item));
             Assertions.assertFalse(sfItem.isItem(new CustomItem(Material.BEACON, "&cItem Test")));
         }

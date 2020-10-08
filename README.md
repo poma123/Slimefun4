@@ -1,5 +1,5 @@
 # Slimefun 4
-Looking for the download link? [**Click here**](https://github.com/TheBusyBiscuit/Slimefun4/blob/master/README.md#download-slimefun-4)
+Looking for the download link? [**Click here**](https://github.com/Slimefun/Slimefun4/blob/master/README.md#download-slimefun-4)
 
 Slimefun is a plugin which aims to turn your Spigot Server into a modpack without ever installing a single mod. It offers everything you could possibly imagine. From Backpacks to Jetpacks! Slimefun lets every player decide on their own how much they want to dive into Magic or Tech.<br>
 We got everything from magical wands to nuclear reactors.<br>
@@ -7,20 +7,22 @@ We feature a magical altar, an electric power grid and even item transport syste
 
 This project originally started back in 2013 and has grown ever since.<br>
 From one single person working on this plugin back then, we grew to a community of thousands of players and over 100 contributors to this project.<br>
-It currently adds over **500 new items and recipes** to Minecraft ([Read more about the history of this project](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Slimefun-in-a-nutshell)).
+It currently adds over **500 new items and recipes** to Minecraft ([Read more about the history of this project](https://github.com/Slimefun/Slimefun4/wiki/Slimefun-in-a-nutshell)).
 
 But it also comes with a lot of Addons too!<br>
-Check out our [Addons](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Addons), you may find exactly what you were looking for.
+Check out our [Addons](https://github.com/Slimefun/Slimefun4/wiki/Addons), you may find exactly what you were looking for.
 
-### Quick navigation
+### :compass: Quick navigation
 * **[Download Slimefun4](#download-slimefun-4)**
+* **[Screenshots](#screenshots)**
 * **[Discord Support Server](#discord)**
-* **[Bug Tracker](https://github.com/TheBusyBiscuit/Slimefun4/issues)**
-* **[Wiki](https://github.com/TheBusyBiscuit/Slimefun4/wiki)**
-* **[FAQ](https://github.com/TheBusyBiscuit/Slimefun4/wiki/FAQ)**
+* **[Bug Tracker](https://github.com/Slimefun/Slimefun4/issues)**
+* **[Wiki](https://github.com/Slimefun/Slimefun4/wiki)**
+* **[FAQ](https://github.com/Slimefun/Slimefun4/wiki/FAQ)**
+* **[How to contribute](https://github.com/Slimefun/Slimefun4/blob/master/CONTRIBUTING.md)**
 
 ## Download Slimefun 4
-(See also: [How to install Slimefun](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Installing-Slimefun))
+(See also: [How to install Slimefun](https://github.com/Slimefun/Slimefun4/wiki/Installing-Slimefun))
 
 **Due to [Spigot's abandonce of the Bukkit API](https://www.spigotmc.org/threads/spigot-bungeecord-1-16-1.447405/#post-3852349), Slimefun is no longer able to work on CraftBukkit, please switch over to Spigot or Paper if you haven't already.**
 
@@ -37,7 +39,7 @@ Here is a full summary of the differences between the two different versions of 
 | **Discord support** | :heavy_check_mark: | :x: |
 | **Bug Reports** | :heavy_check_mark: | :x: |
 | **testing before release** | :x: | :heavy_check_mark: |
-| **change logs** | :x: | :memo: **[change log](https://github.com/TheBusyBiscuit/Slimefun4/blob/master/CHANGELOG.md)** |
+| **change logs** | :x: | :memo: **[change log](https://github.com/Slimefun/Slimefun4/blob/master/CHANGELOG.md)** |
 | **Download link** | :floppy_disk: **[download latest](https://thebusybiscuit.github.io/builds/TheBusyBiscuit/Slimefun4/master/)** | :floppy_disk: **[download "stable"](https://thebusybiscuit.github.io/builds/TheBusyBiscuit/Slimefun4/stable/)** |
 
 **:exclamation: We wholeheartedly recommend you to use _development builds_, they are the most recent version of Slimefun and also receive the most frequent updates!**
@@ -54,86 +56,56 @@ While "stable" builds most definitely contain more bugs than development builds 
 
 </details>
 
+## Screenshots
+So what does Slimefun look like?<br>
+Well, we asked some users on our [Discord server](#discord) to send us some screenshots, so see for yourself:
+|                 Reactors and electricity                  |            Awesome factories             |          Magic and Altars           |
+| :-------------------------------------------: | :--------------------------------------: | :----------------------------------------: |
+| ![](https://raw.githubusercontent.com/Slimefun/Slimefun-Wiki/master/images/showcase1.png) | ![](https://raw.githubusercontent.com/Slimefun/Slimefun-Wiki/master/images/showcase6.png) | ![](https://raw.githubusercontent.com/Slimefun/Slimefun-Wiki/master/images/showcase5.png) |
+| *Screenshot provided by HamtaBot#0001* | *Screenshot provided by Piͭxͪeͤl (mnb)#5049* | *Screenshot provided by Kilaruna#4981* |
+| ![](https://raw.githubusercontent.com/Slimefun/Slimefun-Wiki/master/images/showcase4.png) | ![](https://raw.githubusercontent.com/Slimefun/Slimefun-Wiki/master/images/showcase3.png) | ![](https://raw.githubusercontent.com/Slimefun/Slimefun-Wiki/master/images/showcase2.png) |
+| *Screenshot provided by GalaxyKat11#3816* | *Screenshot provided by TamThan#7987* | *Screenshot provided by Kilaruna#4981* |
+
 ## Discord
-You can find Slimefun's community on Discord and connect with **over 2000** users of this plugin from all over the world.<br>
+You can find Slimefun's community on Discord and connect with **over 2500** users of this plugin from all over the world.<br>
 Click the badge down below to join the server for suggestions/questions or other discussions about this plugin.<br>
 We are also hosting a community event every so often, join us to find out more.<br>
-**Important**: We do **not** accept bug reports on discord, please use our [Issue Tracker](https://github.com/TheBusyBiscuit/Slimefun4/issues) to submit bug reports!
+**Important**: We do **not** accept bug reports on discord, please use our [Issue Tracker](https://github.com/Slimefun/Slimefun4/issues) to submit bug reports!
 
-Due to the sheer size of this discord server, we need to enforce some [important rules](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Discord-Rules).<br>
+Due to the sheer size of this discord server, we need to enforce some [important rules](https://github.com/Slimefun/Slimefun4/wiki/Discord-Rules).<br>
 Not following these rules can lead to a kick or even a ban from the server.
 
 <p align="center">
-  <a href="https://discord.gg/fsD4Bkh">
-    <img src="https://img.shields.io/discord/565557184348422174?color=7289DA&label=Discord&style=for-the-badge" alt="Discord Invite"/>
-  </a><br>
-  (Click the badge to join)
+  <a href="https://discord.gg/slimefun">
+    <img src="https://discordapp.com/api/guilds/565557184348422174/widget.png?style=banner3" alt="Discord Invite"/>
+  </a>
 </p>
 
 ## Wiki
 Slimefun has a (detailed and well-maintained - *cough*) Wiki for new players, maybe also consider
 expanding the wiki to help grow our community and help out new users of this plugin.
-https://github.com/TheBusyBiscuit/Slimefun4/wiki
+https://github.com/Slimefun/Slimefun4/wiki
 
 ##### Highlighted Articles
-* [What is Slimefun?](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Slimefun-in-a-nutshell)
-* [How to install Slimefun](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Installing-Slimefun)
-* [Addons for Slimefun 4](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Addons)
-* [How to create an Addon for Slimefun 4](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Developer-Guide)
-* [Getting Started](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Getting-Started)
-* [Frequently Asked Questions](https://github.com/TheBusyBiscuit/Slimefun4/wiki/FAQ)
-* [Common issues](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Common-Issues)
-* [Help us expand the Wiki!](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Expanding-the-Wiki)
-* [Help us translate Slimefun!](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Translating-Slimefun)
+* [What is Slimefun?](https://github.com/Slimefun/Slimefun4/wiki/Slimefun-in-a-nutshell)
+* [How to install Slimefun](https://github.com/Slimefun/Slimefun4/wiki/Installing-Slimefun)
+* [Addons for Slimefun 4](https://github.com/Slimefun/Slimefun4/wiki/Addons)
+* [How to create an Addon for Slimefun 4](https://github.com/Slimefun/Slimefun4/wiki/Developer-Guide)
+* [Getting Started](https://github.com/Slimefun/Slimefun4/wiki/Getting-Started)
+* [Frequently Asked Questions](https://github.com/Slimefun/Slimefun4/wiki/FAQ)
+* [Common issues](https://github.com/Slimefun/Slimefun4/wiki/Common-Issues)
+* [Help us expand the Wiki!](https://github.com/Slimefun/Slimefun4/wiki/Expanding-the-Wiki)
+* [Help us translate Slimefun!](https://github.com/Slimefun/Slimefun4/wiki/Translating-Slimefun)
 
 The wiki is entirely community-run, so if you find an article missing, feel free to write one and share it with others.
 
 ## Contributing to this project
 Slimefun 4 is an Open-Source project and licensed under
-[GNU GPLv3](https://github.com/TheBusyBiscuit/Slimefun4/blob/master/LICENSE).<br>
-Over 100 people have already contributed to this amazing project. You guys are awesome.<br>
+[GNU GPLv3](https://github.com/Slimefun/Slimefun4/blob/master/LICENSE).<br>
+Over 150+ people have already contributed to this amazing project. You guys are awesome.<br>
 Please consider helping us maintain this project too, your engagement keeps the project alive <3.
 
-### Translations
-Slimefun4 has recently added suport for translations, note that translations are still _work in progress_.<br>
-So not everything may be available for translation yet.<br>
-[Read more...](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Translating-Slimefun)
-
-### Pull requests
-This is an open-source community project, so **your contributions keep this plugin alive!**<br>
-Pull Requests can be fixes, changes or even additions, but please keep in mind that if you add too much content to Slimefun 4, you should maybe consider making an Addon for it instead ([Developer Guide](https://github.com/TheBusyBiscuit/Slimefun4/wiki/Developer-Guide)).
-
-#### Compiling
-Slimefun is written in Java and uses [Maven](https://maven.apache.org/) for compilation.<br>
-To compile Slimefun yourself, follow these steps:
-
-1. Clone the project via git<br>
-`$ git clone https://github.com/TheBusyBiscuit/Slimefun4/`
-2. Compile the project using Maven<br>
-`$ mvn clean package`
-
-If you are already using an IDE, make sure to import the project via git and set it as a *Maven project*. Then you should be able build it via Maven using the goals `clean package`.
-
-If you have any further questions, then please join our [Discord Support Server](#discord) and ask your questions in the `#programming-help` channel. Note that we will not accept any bug reports from custom-compiled versions of Slimefun.
-
-### Code Quality
-Slimefun uses [Sonarcloud.io](https://sonarcloud.io/dashboard?id=TheBusyBiscuit_Slimefun4) to monitor Code Quality.
-
-| [Overall Maintainability](https://sonarcloud.io/documentation/user-guide/metric-definitions/#maintainability) | "Code Smells" | "Technical Debt" | Test Coverage |
-| ---- | ---- | ---- | ---- |
-| [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=TheBusyBiscuit_Slimefun4&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=TheBusyBiscuit_Slimefun4) | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=TheBusyBiscuit_Slimefun4&metric=code_smells)](https://sonarcloud.io/dashboard?id=TheBusyBiscuit_Slimefun4) | [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=TheBusyBiscuit_Slimefun4&metric=sqale_index)](https://sonarcloud.io/dashboard?id=TheBusyBiscuit_Slimefun4) | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TheBusyBiscuit_Slimefun4&metric=coverage)](https://sonarcloud.io/dashboard?id=TheBusyBiscuit_Slimefun4) |
-
-##### "Code Smells"
-Code Smells are portions of the source code that are confusing, lack documentation or are just done very badly in general. These code smells should be held to a bare minimum.
-
-_Please contact us on [Discord](#discord) before working on any code smells. Some design patterns may not be changed abruptly because an addon might depend on them._
-
-##### "Technical Debt"
-Technical Debt is basically an estimate for how long it would take to fix all issues and code smells.
-
-##### Test Coverage
-Slimefun now also uses Automated Tests to determine whether an update could break something. The coverage shows how much these tests cover. Higher coverage means less breaking changes and as a result also better and more reliable builds.
-Due to this being a very huge project though, getting to `100% coverage` is probably close to impossible. But increasing that number even slightly still helps. So feel free to write Unit Tests for Slimefun and place them in the [/src/test/java/](https://github.com/TheBusyBiscuit/Slimefun4/tree/master/src/test/java) folder.
+You can find more info on how to contribute to this project in our [CONTRIBUTING.md](https://github.com/Slimefun/Slimefun4/blob/master/CONTRIBUTING.md).
 
 ## Disclaimers
 Slimefun4 uses various systems that collect usage information or download automatic updates as well as the latest information about the project.
@@ -159,6 +131,10 @@ All of the collected data is publicly accessible: https://bstats.org/plugin/bukk
 
 You can also disable this behaviour under `/plugins/bStats/config.yml`.<br>
 For more info see [bStats' Privacy Policy](https://bstats.org/privacy-policy)
+
+Our [bStats Module](https://github.com/Slimefun/MetricsModule) is downloaded automatically when installing this Plugin, this module will automatically update on server starts independently from the main plugin. This way we can automatically roll out updates to the bStats module, in cases of severe performance issues for example where live data and insight into what is impacting performance can be crucial.
+These updates can of course be disabled under `/plugins/Slimefun/config.yml`. To disable metrics collection as a whole, see the paragraph above.
+
 </details>
 
 <details>
@@ -168,7 +144,7 @@ Lastly, Slimefun4 connects to https://api.github.com/ to gather information abou
 No information about you or your Minecraft Server is sent to GitHub.
 
 This information includes (but is not limited to)
-* list of contributors, their username and profile link (from the repositories `TheBusyBiscuit/Slimefun4`, `Slimefun/Slimefun-Wiki` and `Slimefun/Resourcepack`)
+* list of contributors, their username and profile link (from the repositories `Slimefun/Slimefun4`, `Slimefun/Slimefun-Wiki` and `Slimefun/Resourcepack`)
 * amount of open issues in this repository
 * amount of pending pull requests in this repository
 * amount of stars in this repository
@@ -177,5 +153,5 @@ This information includes (but is not limited to)
 * date of the last commit to this repository
 </details>
 
-Additionally the plugin connects to https://mojang.com/ to retrieve the Minecraft skins of our contributors (if possible).<br>
+Additionally the plugin connects to [textures.minecraft.net](https://www.minecraft.net/en-us) to retrieve the Minecraft skins of our contributors (if possible).<br>
 Note that Slimefun is not associated with `Mojang Studios` or Minecraft.

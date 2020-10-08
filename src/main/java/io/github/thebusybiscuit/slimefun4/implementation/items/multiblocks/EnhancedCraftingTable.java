@@ -26,7 +26,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 public class EnhancedCraftingTable extends BackpackCrafter {
 
     public EnhancedCraftingTable(Category category, SlimefunItemStack item) {
-        super(category, item, new ItemStack[] { null, null, null, null, new ItemStack(Material.CRAFTING_TABLE), null, null, new ItemStack(Material.DISPENSER), null }, new ItemStack[0], BlockFace.SELF);
+        super(category, item, new ItemStack[] { null, null, null, null, new ItemStack(Material.CRAFTING_TABLE), null, null, new ItemStack(Material.DISPENSER), null }, BlockFace.SELF);
     }
 
     @Override
@@ -37,12 +37,12 @@ public class EnhancedCraftingTable extends BackpackCrafter {
         if (state instanceof Dispenser) {
             Dispenser disp = (Dispenser) state;
             Inventory inv = disp.getInventory();
-
             List<ItemStack[]> inputs = RecipeType.getRecipeInputList(this);
 
             for (int i = 0; i < inputs.size(); i++) {
                 if (isCraftable(inv, inputs.get(i))) {
                     ItemStack output = RecipeType.getRecipeOutputList(this, inputs.get(i)).clone();
+
                     if (Slimefun.hasUnlocked(p, output, true)) {
                         craft(inv, dispenser, p, b, output);
                     }
@@ -50,6 +50,7 @@ public class EnhancedCraftingTable extends BackpackCrafter {
                     return;
                 }
             }
+
             SlimefunPlugin.getLocalization().sendMessage(p, "machines.pattern-not-found", true);
         }
     }
@@ -72,12 +73,14 @@ public class EnhancedCraftingTable extends BackpackCrafter {
                     ItemUtils.consumeItem(item, true);
                 }
             }
+
             p.getWorld().playSound(b.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 1, 1);
 
             outputInv.addItem(output);
 
+        } else {
+            SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);
         }
-        else SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);
     }
 
     private boolean isCraftable(Inventory inv, ItemStack[] recipe) {
@@ -87,8 +90,7 @@ public class EnhancedCraftingTable extends BackpackCrafter {
                     if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], false)) {
                         return false;
                     }
-                }
-                else {
+                } else {
                     return false;
                 }
             }
